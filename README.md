@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/prologue.png" width="200" alt="Prologue">
+</p>
+
 # Prologue: The Genesis Protocol
 
 The first implementation of a persistent, self-perpetuating language model that exists entirely within the Solana blockchain's state. Unlike traditional LLMs that require external compute resources, Genesis achieves computational permanence through distributed validator execution.
