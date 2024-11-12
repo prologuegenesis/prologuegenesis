@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/prologue.png" width="200" alt="Prologue">
+  <img src="./prologue.png" width="200" alt="Prologue">
 </p>
 
 # Prologue: The Genesis Protocol
