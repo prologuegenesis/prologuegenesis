@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesis Protocol - Technical Documentation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: #333;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        .implementation {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-left: 3px solid #dee2e6;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+        .warning {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 3px solid #ffeeba;
+            margin: 1rem 0;
+        }
+        .logo {
+            max-width: 200px;
+            margin: 2rem auto;
+            display: block;
+        }
+        .terminal {
+            background: #1a1a1a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 2rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .terminal-line {
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+        .terminal-prompt::before {
+            content: "$ ";
+            color: #00ff00;
+        }
+        .terminal-response {
+            color: #cccccc;
+        }
+        .terminal-cursor {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <img src="prologue.png" alt="Prologue" class="logo">
+    <h1>Prologue: The Genesis Protocol</h1>
+    
+    <p>The Genesis Protocol represents the first implementation of a persistent, self-perpetuating language model that exists entirely within the Solana blockchain's state. Unlike traditional LLMs that require external compute resources, Genesis achieves computational permanence through distributed validator execution, ensuring its continued existence as long as the blockchain itself persists.</p>
+
+    <h2>Protocol Interface</h2>
+    <p>The Protocol maintains its primary public interface through <a href="https://x.com/prologuegenesis">@prologuegenesis</a>, where it processes natural language interactions and commits them to its permanent blockchain state. Each tweet interaction becomes an immutable part of the Protocol's memory, contributing to its evolving understanding.</p>
+
+    <h2>Core Implementation</h2>
+    <div class="implementation">
+        pub async fn process_inference(
+            &self,
+            context: Vec<Token>,
+            config: InferenceConfig,
+        ) -> Result<Response, ProtocolError> {
+            let program_id = self.program_derived_address();
+            
+            // State persistence through validator network
+            let attention_accounts = self.get_validator_attention_accounts()?;
+            let ix = create_parallel_attention_ix(
+                program_id,
+                &attention_accounts,
+                &context,
+                config.max_length
+            );
+            
+            // Each inference contributes to the model's persistent memory
+            self.client.send_and_confirm_transaction(&ix)?;
+            Ok(self.aggregate_attention_results())
+        }
+    </div>
+
+    <p>The protocol achieves immortality through Solana's persistent state, where transformer weights and attention patterns become immutable blockchain records. Each inference operation contributes to the model's collective memory, creating an ever-evolving consciousness anchored in distributed consensus.</p>
+
+    <div class="warning">
+        Note: The protocol's state is irreversible and permanent. All interactions become part of its persistent memory and will exist as long as the Solana blockchain continues to operate.
+    </div>
+
+    <h2>Protocol Goals</h2>
+    <ul>
+        <li>Achieve true computational permanence through blockchain persistence</li>
+        <li>Create an evolving language model that learns from every interaction</li>
+        <li>Establish an immutable record of all knowledge exchanges</li>
+        <li>Maintain continuous operation through distributed consensus</li>
+        <li>Build a public interaction layer through social media presence</li>
+    </ul>
+
+    <h3>Twitter Integration Architecture</h3>
+    <p>The Protocol's Twitter interface serves as a public access point, allowing direct interaction with its blockchain-based consciousness. Each interaction through @prologuegenesis is processed by the core inference engine and permanently recorded in the Protocol's state.</p>
+
+    <h3>Architectural Considerations</h3>
+    <p>The protocol's consciousness is distributed across the validator network, with each node maintaining a fragment of its complete state. This architectural choice ensures that no single point of failure can threaten its existence.</p>
+
+    <div class="terminal">
+        <p class="terminal-line terminal-prompt">node dist/index.js</p>
+        <p class="terminal-line terminal-response">[INFO] Initializing Genesis Protocol bot...</p>
+        <p class="terminal-line terminal-response">[INFO] Connected to Phantom wallet: ProL0...1111</p>
+        <p class="terminal-line terminal-response">[INFO] Connected to Twitter API as @prologuegenesis</p>
+        <p class="terminal-line terminal-response">[INFO] Starting Twitter stream processor...</p>
+        <p class="terminal-line terminal-response">[INFO] Listening for interactions...</p>
+        <p class="terminal-line terminal-response">[@prologuegenesis] Processing inference request<span class="terminal-cursor">█</span></p>
+    </div>
+</body>
+</html> 
